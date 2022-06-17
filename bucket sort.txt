@@ -1,0 +1,160 @@
+def bucketSort(array):
+    bucket = []
+
+    # Create empty buckets
+    for i in range(len(array)):
+        bucket.append([])
+
+    # Insert elements into their respective buckets
+    for j in array:
+        index_b = int(10 * j)
+        bucket[index_b].append(j)
+
+    # Sort the elements of each bucket
+    for i in range(len(array)):
+        bucket[i] = sorted(bucket[i])
+
+    # Get the sorted elements
+    k = 0
+    for i in range(len(array)):
+        for j in range(len(bucket[i])):
+            array[k] = bucket[i][j]
+            k += 1
+    return array
+
+
+array = [.42, .32, .33, .52, .37, .47, .51]
+print("Sorted Array in descending order is")
+print(bucketSort(array))
+==============================================================================
+
+
+print(=================================================================================================================
+
+print("your array is float press one otherwise press 2")
+print("================================================")
+n=int(input("enter your choice"))
+print("================================================")
+
+if(n==1):
+    def insertion(inpvalue):
+        for i in range(1, len(inpvalue)):
+            temp = inpvalue[i]
+            j = i - 1
+            while (j >= 0 and temp < inpvalue[j]):
+                inpvalue[j + 1] = inpvalue[j]
+                j = j - 1
+            inpvalue[j + 1] = temp
+
+    def bucket_sort(inpvalue):
+        largest = max(inpvalue)
+        length = len(inpvalue)
+        size = largest/length
+     
+        buckets = [[] for _ in range(length)]
+        for i in range(length):
+            j = int(inpvalue[i]/size)
+            
+            if j != length:
+                buckets[j].append(inpvalue[i])
+            else:
+                buckets[length - 1].append(inpvalue[i])
+     
+        for i in range(length):
+            insertion(buckets[i])
+     
+        res = []
+        
+        for i in range(length):
+            res = res + buckets[i]
+     
+        return res
+ 
+ 
+    inpvalue = input('Enter the list of (nonnegative) numbers: ').split()
+    
+    inpvalue = [float(x) for x in inpvalue]
+    sorted_list = bucket_sort(inpvalue)
+    print("================================================")
+    print('Sorted list: ', end='')
+    print(sorted_list)
+    
+elif (n==2):
+    def insertion(inpvalue):
+        for i in range(1, len(inpvalue)):
+            temp = inpvalue[i]
+            j = i - 1
+            while (j >= 0 and temp < inpvalue[j]):
+                inpvalue[j + 1] = inpvalue[j]
+                j = j - 1
+            inpvalue[j + 1] = temp
+
+    def bucket_sort(inpvalue):
+        largest = max(inpvalue)
+        length = len(inpvalue)
+        size = largest/length
+     
+        buckets = [[] for _ in range(length)]
+        for i in range(length):
+            j = int(inpvalue[i]/size)
+            
+            if j != length:
+                buckets[j].append(inpvalue[i])
+            else:
+                buckets[length - 1].append(inpvalue[i])
+     
+        for i in range(length):
+            insertion(buckets[i])
+     
+        res = []
+        
+        for i in range(length):
+            res = res + buckets[i]
+     
+        return res
+     
+     
+    inpvalue = input('Enter the list of (nonnegative) numbers: ').split()
+    inpvalue = [int(x) for x in inpvalue]
+    sorted_list = bucket_sort(inpvalue)
+    print("================================================")
+    print('Sorted list: ', end='')
+    print(sorted_list)
+
+    
+else:
+    print("invalid")
+
+
+Algorithm of bucket sort 
+========================
+1: Create an empty array.
+2: Loop through the original array and put each object in a “bucket”.
+3: Sort each of the non-empty buckets
+4: Check the buckets in order and then put all objects back into the original array.
+
+
+
+Bucket Sort Pseudocode
+======================
+
+
+BucketSort(A)
+n = A.length
+Let B[0; : : : ; n 􀀀 1] be a new array
+for i = 0 to n - 1
+B[i]   0
+for i = 1 to n
+B[bnA[i]c]   A[i]
+for i = 0 to n-1
+sort list B[i] using insertion sort
+concatenate the lists B[0];B[1]; : : : ;B[n 􀀀 1]
+return B
+1
+
+
+
+
+===========================
+Bucket sort assumes that the input is drawn from a uniform distribution. ... The average time complexity for 
+Bucket Sort is O(n + k). The worst time complexity is O(n²). The space complexity for Bucket Sort is O(n+k).
